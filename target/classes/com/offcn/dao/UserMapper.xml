@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.offcn.dao.UserMapper" >
+
+    <select id="look" resultType="com.offcn.bean.User">
+        select * from user where uid=#{uid}
+    </select>
+
+    <select id="getList" resultType="com.offcn.bean.User">
+        select * from user
+    </select>
+    <insert id="saveInfo">
+        insert into user
+        (uid, name, sex, phone_number, area,manager,username, password, photo, create_time)
+        values (null ,#{name},#{sex},#{phoneNumber},#{area},#{manager},#{username},#{password},#{photo},#{createTime})
+    </insert>
+    <update id="update">
+        update user set name=#{name},sex=#{sex},phone_number=#{phoneNumber},
+        area=#{area},manager=#{manager},username=#{username},password=#{password},
+        photo=#{photo},create_time=#{createTime} where uid=#{uid}
+    </update>
+    <delete id="delete">
+        delete from user where uid=#{uid}
+    </delete>
+    
+    <select id="selectUser" resultType="com.offcn.bean.User">
+    	select * from user where username=#{username} and password=#{password}
+    </select>
+    
+    
+</mapper>
